@@ -65,14 +65,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           </span>
 
           <div className="flex items-center gap-2">
-            <button
-              onClick={handleWhatsApp}
+            <a
+              href={generateWhatsAppUrl({ productName: product.name })}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
               title="Quick WhatsApp Enquiry"
-              className="p-2 rounded-full bg-neutral-100 text-neutral-700 hover:bg-[#25D366] hover:text-white transition-colors"
+              className="p-2 rounded-full bg-neutral-100 text-neutral-700 hover:bg-[#25D366] hover:text-white transition-colors flex items-center justify-center"
             >
               <MessageCircle className="w-4 h-4" />
-            </button>
+            </a>
             <button
+              type="button"
               onClick={(e) => {
                 e.stopPropagation();
                 onEnquire?.(product);

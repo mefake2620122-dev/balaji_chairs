@@ -1,11 +1,11 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Search, Filter, SlidersHorizontal, MessageCircle, ArrowRight, Check, X } from 'lucide-react';
 import { SectionHeading } from '../components/SectionHeading';
 import { ProductCard } from '../components/ProductCard';
 import { Button } from '../components/Button';
 import { products, Product } from '../data/products';
 import { categories } from '../data/categories';
-import { generateWhatsAppUrl } from '../lib/whatsapp';
+import { generateWhatsAppUrl, openWhatsApp } from '../lib/whatsapp';
 
 export interface ProductsPageProps {
   initialCategory?: string;
@@ -20,6 +20,12 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [activeProductModal, setActiveProductModal] = useState<Product | null>(null);
   const [selectedVariant, setSelectedVariant] = useState<string>('');
+
+  useEffect(() => {
+    if (initialCategory) {
+      setSelectedCategory(initialCategory);
+    }
+  }, [initialCategory]);
 
   const filterTabs = [
     { id: 'all', label: 'All Products' },
@@ -40,14 +46,6 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
   const handleOpenDetail = (prod: Product) => {
     setActiveProductModal(prod);
     setSelectedVariant(prod.variants[0] || '');
-  };
-
-  const handleWhatsAppModal = () => {
-    if (!activeProductModal) return;
-    const url = generateWhatsAppUrl({
-      productName: `${activeProductModal.name} (${selectedVariant})`
-    });
-    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -263,13 +261,17 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
               </span>
 
               <div className="flex items-center gap-3 w-full sm:w-auto">
-                <button
-                  onClick={handleWhatsAppModal}
+                <a
+                  href={generateWhatsAppUrl({
+                    productName: `${activeProductModal.name} (${selectedVariant})`
+                  })}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#25D366] text-white text-xs font-semibold hover:bg-[#20bd5a] transition-all"
                 >
                   <MessageCircle className="w-4 h-4 fill-white" />
                   <span>WhatsApp Quote</span>
-                </button>
+                </a>
 
                 <Button
                   variant="primary"

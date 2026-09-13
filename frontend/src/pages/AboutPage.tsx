@@ -118,8 +118,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenEnquiry, onNavigate 
             <Button
               variant="dark"
               size="md"
-              onClick={handleWhatsApp}
+              href={generateWhatsAppUrl({ requirement: "About Balaji Chairs & Showroom Visit" })}
+              target="_blank"
               icon={<MessageCircle className="w-4 h-4 text-[#25D366]" />}
+              className="cursor-pointer"
             >
               Chat on WhatsApp
             </Button>

@@ -37,3 +37,14 @@ export function generateWhatsAppUrl(options: WhatsAppIntentOptions = {}): string
 
   return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 }
+
+export function openWhatsApp(options: WhatsAppIntentOptions = {}): void {
+  const url = generateWhatsAppUrl(options);
+  const a = document.createElement('a');
+  a.href = url;
+  a.target = '_blank';
+  a.rel = 'noopener noreferrer';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}

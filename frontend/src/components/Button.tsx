@@ -7,6 +7,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   icon?: React.ReactNode;
   iconPosition?: 'left' | 'right';
   isLoading?: boolean;
+  href?: string;
+  target?: string;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -18,9 +20,12 @@ export const Button: React.FC<ButtonProps> = ({
   isLoading = false,
   className,
   disabled,
+  href,
+  target,
+  type = 'button',
   ...props
 }) => {
-  const baseStyles = "inline-flex items-center justify-center font-medium rounded-full transition-all duration-300 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none tracking-tight group";
+  const baseStyles = "inline-flex items-center justify-center font-medium rounded-full transition-all duration-300 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none tracking-tight group cursor-pointer text-center";
 
   const variants = {
     primary: "bg-brand-red text-white hover:bg-brand-redDark shadow-sm hover:shadow-red-glow",
@@ -37,12 +42,8 @@ export const Button: React.FC<ButtonProps> = ({
     lg: "text-base px-8 py-4 gap-2.5"
   };
 
-  return (
-    <button
-      className={cn(baseStyles, variants[variant], sizes[size], className)}
-      disabled={disabled || isLoading}
-      {...props}
-    >
+  const content = (
+    <>
       {isLoading && (
         <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-current" fill="none" viewBox="0 0 24 24">
           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -63,6 +64,31 @@ export const Button: React.FC<ButtonProps> = ({
           {icon}
         </span>
       )}
+    </>
+  );
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        target={target}
+        rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+        className={cn(baseStyles, variants[variant], sizes[size], className)}
+        {...(props as any)}
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <button
+      type={type}
+      className={cn(baseStyles, variants[variant], sizes[size], className)}
+      disabled={disabled || isLoading}
+      {...props}
+    >
+      {content}
     </button>
   );
 };

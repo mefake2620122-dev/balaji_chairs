@@ -136,8 +136,10 @@ export const RepairPage: React.FC<RepairPageProps> = ({ onSuccess }) => {
                   <Button
                     variant="primary"
                     size="sm"
-                    onClick={handleWhatsApp}
+                    href={generateWhatsAppUrl({ serviceType: selectedIssues.join(', ') || "Office Chair Repair" })}
+                    target="_blank"
                     icon={<MessageCircle className="w-4 h-4" />}
+                    className="cursor-pointer"
                   >
                     Follow up on WhatsApp
                   </Button>
@@ -275,14 +277,15 @@ export const RepairPage: React.FC<RepairPageProps> = ({ onSuccess }) => {
                     Submit Repair Request
                   </Button>
 
-                  <button
-                    type="button"
-                    onClick={handleWhatsApp}
-                    className="flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#25D366] text-white text-xs font-bold hover:bg-[#20bd5a] transition-all shadow-sm"
+                  <a
+                    href={generateWhatsAppUrl({ serviceType: "Urgent Chair Repair Evaluation" })}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#25D366] text-white text-xs font-bold hover:bg-[#20bd5a] transition-all shadow-sm cursor-pointer"
                   >
                     <MessageCircle className="w-4 h-4 fill-white" />
                     <span>Quick WhatsApp Help</span>
-                  </button>
+                  </a>
                 </div>
               </form>
             )}

@@ -38,13 +38,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnquiry }) => 
                 <Phone className="w-3.5 h-3.5 text-emerald-400" />
                 <span>+91 78803 53900</span>
               </a>
-              <button
-                onClick={handleWhatsApp}
-                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#25D366]/20 hover:bg-[#25D366] text-white text-xs font-semibold tracking-tight transition-colors border border-[#25D366]/30"
+              <a
+                href={generateWhatsAppUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#25D366]/20 hover:bg-[#25D366] text-white text-xs font-semibold tracking-tight transition-colors border border-[#25D366]/30 cursor-pointer"
               >
                 <MessageCircle className="w-3.5 h-3.5 text-[#25D366] group-hover:text-white" />
                 <span>WhatsApp Us</span>
-              </button>
+              </a>
             </div>
           </div>
 
@@ -55,27 +57,27 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnquiry }) => 
             </h4>
             <ul className="space-y-2 text-xs sm:text-sm text-neutral-300">
               <li>
-                <button onClick={() => onNavigate('/products')} className="hover:text-white transition-colors">
+                <button type="button" onClick={() => onNavigate('/products')} className="hover:text-white transition-colors cursor-pointer">
                   Revolving Chairs
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('/products')} className="hover:text-white transition-colors">
+                <button type="button" onClick={() => onNavigate('/products')} className="hover:text-white transition-colors cursor-pointer">
                   Visitor & Cantilever Chairs
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('/products')} className="hover:text-white transition-colors">
+                <button type="button" onClick={() => onNavigate('/products')} className="hover:text-white transition-colors cursor-pointer">
                   Pneumatic Revolving Stools
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('/products')} className="hover:text-white transition-colors">
+                <button type="button" onClick={() => onNavigate('/products')} className="hover:text-white transition-colors cursor-pointer">
                   Executive Desks & Tables
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('/solutions')} className="hover:text-white transition-colors">
+                <button type="button" onClick={() => onNavigate('/solutions')} className="hover:text-white transition-colors cursor-pointer">
                   Modular Workstations
                 </button>
               </li>
@@ -89,27 +91,27 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnquiry }) => 
             </h4>
             <ul className="space-y-2 text-xs sm:text-sm text-neutral-300">
               <li>
-                <button onClick={() => onNavigate('/repair')} className="hover:text-white transition-colors">
+                <button type="button" onClick={() => onNavigate('/repair')} className="hover:text-white transition-colors cursor-pointer">
                   Hydraulic Replacement
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('/repair')} className="hover:text-white transition-colors">
+                <button type="button" onClick={() => onNavigate('/repair')} className="hover:text-white transition-colors cursor-pointer">
                   Wheel & Castor Replacement
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('/repair')} className="hover:text-white transition-colors">
+                <button type="button" onClick={() => onNavigate('/repair')} className="hover:text-white transition-colors cursor-pointer">
                   Foam Cushioning & Upholstery
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('/solutions')} className="hover:text-white transition-colors">
+                <button type="button" onClick={() => onNavigate('/solutions')} className="hover:text-white transition-colors cursor-pointer">
                   Corporate Office Setup
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('/projects')} className="hover:text-white transition-colors">
+                <button type="button" onClick={() => onNavigate('/projects')} className="hover:text-white transition-colors cursor-pointer">
                   Recent Installations
                 </button>
               </li>
@@ -154,21 +156,22 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnquiry }) => 
             © {currentYear} Balaji Chairs™ (Innovative Creations). All Rights Reserved.
           </div>
           <div className="flex flex-wrap items-center gap-6">
-            <button onClick={() => onNavigate('/privacy')} className="hover:text-neutral-300 transition-colors">
+            <button type="button" onClick={() => onNavigate('/privacy')} className="hover:text-neutral-300 transition-colors cursor-pointer">
               Privacy Policy
             </button>
-            <button onClick={() => onNavigate('/terms')} className="hover:text-neutral-300 transition-colors">
+            <button type="button" onClick={() => onNavigate('/terms')} className="hover:text-neutral-300 transition-colors cursor-pointer">
               Terms of Supply
             </button>
             <button
+              type="button"
               onClick={() => onNavigate('/admin')}
-              className="hover:text-neutral-300 text-neutral-500 transition-colors flex items-center gap-1 group"
+              className="hover:text-neutral-300 text-neutral-500 transition-colors flex items-center gap-1 group cursor-pointer"
               title="Staff & Management CRM Portal"
             >
               <Lock className="w-3 h-3 text-neutral-500 group-hover:text-brand-red transition-colors" />
               <span>Staff Portal</span>
             </button>
-            <button onClick={onOpenEnquiry} className="hover:text-white text-brand-red transition-colors font-semibold">
+            <button type="button" onClick={onOpenEnquiry} className="hover:text-white text-brand-red transition-colors font-semibold cursor-pointer">
               Instant Quotation
             </button>
           </div>

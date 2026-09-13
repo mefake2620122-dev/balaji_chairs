@@ -136,8 +136,14 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                 <Button
                   variant="primary"
                   size="sm"
-                  onClick={handleDirectWhatsApp}
+                  href={generateWhatsAppUrl({
+                    customerName: name,
+                    productName: product || undefined,
+                    requirement: requirement || undefined
+                  })}
+                  target="_blank"
                   icon={<MessageCircle className="w-4 h-4" />}
+                  className="cursor-pointer"
                 >
                   Continue on WhatsApp
                 </Button>

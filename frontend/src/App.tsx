@@ -14,6 +14,7 @@ import { HomePage } from './pages/HomePage';
 import { ProductsPage } from './pages/ProductsPage';
 import { SolutionsPage } from './pages/SolutionsPage';
 import { RepairPage } from './pages/RepairPage';
+import { ProjectsPage } from './pages/ProjectsPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { PrivacyPage } from './pages/PrivacyPage';
@@ -93,6 +94,12 @@ export function App() {
           description: 'Quick genuine chair repair in Unnao: class-4 hydraulic gas lift cylinders, silent nylon castors, heavy-duty tilt mechanisms, and foam re-upholstery.',
           schemaType: 'service' as const
         };
+      case '/projects':
+        return {
+          title: 'Installed Workspace & Clinic Seating Projects in Unnao',
+          description: 'Explore completed furniture and chair installations by Balaji Chairs: executive doctor cabins, corporate offices, IT workstations, and reception suites.',
+          schemaType: 'website' as const
+        };
       case '/about':
         return {
           title: 'Showroom Heritage & Ergonomic Craftsmanship',
@@ -160,12 +167,19 @@ export function App() {
             onOpenEnquiry={handleOpenEnquiry}
           />
         );
-      case '/products':
+      case '/products': {
+        const queryStr = currentPath.includes('?')
+          ? currentPath.split('?')[1]
+          : (typeof window !== 'undefined' ? window.location.search : '');
+        const params = new URLSearchParams(queryStr);
+        const cat = params.get('category') || 'all';
         return (
           <ProductsPage
+            initialCategory={cat}
             onOpenEnquiry={(product) => handleOpenEnquiry(product)}
           />
         );
+      }
       case '/solutions':
         return (
           <SolutionsPage
@@ -181,7 +195,7 @@ export function App() {
         );
       case '/projects':
         return (
-          <HomePage
+          <ProjectsPage
             onNavigate={navigateTo}
             onOpenEnquiry={handleOpenEnquiry}
           />

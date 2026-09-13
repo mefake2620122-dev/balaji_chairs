@@ -28,19 +28,22 @@ export const FloatingActionBar: React.FC<FloatingActionBarProps> = ({
         </a>
 
         {/* WhatsApp Button */}
-        <button
-          onClick={handleWhatsApp}
-          className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#25D366] text-white text-xs font-semibold tracking-tight active:scale-[0.98] transition-all shadow-sm"
+        <a
+          href={generateWhatsAppUrl({ requirement: "General Office Seating Inquiry" })}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#25D366] text-white text-xs font-semibold tracking-tight active:scale-[0.98] transition-all shadow-sm cursor-pointer"
         >
           <MessageCircle className="w-4 h-4 fill-white" />
           <span>WhatsApp</span>
-        </button>
+        </a>
 
         {/* Quick Enquiry Modal Trigger */}
         {onOpenEnquiry && (
           <button
+            type="button"
             onClick={onOpenEnquiry}
-            className="flex items-center justify-center p-3 rounded-xl bg-brand-red text-white active:scale-[0.98] transition-all shadow-sm"
+            className="flex items-center justify-center p-3 rounded-xl bg-brand-red text-white active:scale-[0.98] transition-all shadow-sm cursor-pointer"
             title="Send Quick Enquiry"
           >
             <Sparkles className="w-4 h-4" />

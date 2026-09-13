@@ -117,9 +117,10 @@ export const FeaturedProductSection: React.FC<FeaturedProductSectionProps> = ({
               <Button
                 variant="outline"
                 size="md"
-                onClick={handleWhatsApp}
-                icon={<MessageCircle className="w-4 h-4" />}
-                className="w-full sm:w-auto"
+                href={generateWhatsAppUrl({ productName: `${featuredProduct.name} (${selectedVariant})` })}
+                target="_blank"
+                icon={<MessageCircle className="w-4 h-4 text-[#25D366]" />}
+                className="w-full sm:w-auto cursor-pointer"
               >
                 Instant WhatsApp Quote
               </Button>

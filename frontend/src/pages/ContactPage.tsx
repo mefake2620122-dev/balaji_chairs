@@ -112,12 +112,14 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onSuccess }) => {
               </p>
             </div>
             <div className="pt-4 mt-4 border-t border-neutral-100">
-              <button
-                onClick={handleWhatsApp}
-                className="text-xs font-bold text-[#25D366] hover:underline inline-flex items-center gap-1"
+              <a
+                href={generateWhatsAppUrl({ requirement: "Contact Page Chat" })}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-bold text-[#25D366] hover:underline inline-flex items-center gap-1 cursor-pointer"
               >
                 <span>Open WhatsApp Chat</span>
-              </button>
+              </a>
             </div>
           </div>
 

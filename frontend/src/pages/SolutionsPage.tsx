@@ -98,8 +98,10 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({
                       <Button
                         variant="outline"
                         size="sm"
-                        onClick={() => handleWhatsApp(solution.title)}
+                        href={generateWhatsAppUrl({ requirement: `Office Solution for ${solution.title}` })}
+                        target="_blank"
                         icon={<MessageCircle className="w-4 h-4 text-[#25D366]" />}
+                        className="cursor-pointer"
                       >
                         WhatsApp Plan
                       </Button>

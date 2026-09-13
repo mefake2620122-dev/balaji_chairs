@@ -104,13 +104,15 @@ export const ShowroomSection: React.FC = () => {
                 <span>Call Now</span>
               </a>
 
-              <button
-                onClick={handleWhatsApp}
-                className="flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-[#25D366] text-white text-xs font-bold tracking-tight hover:bg-[#20bd5a] transition-all shadow-sm"
+              <a
+                href={generateWhatsAppUrl({ requirement: "Showroom Visit & Directions" })}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-[#25D366] text-white text-xs font-bold tracking-tight hover:bg-[#20bd5a] transition-all shadow-sm cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4 fill-white" />
                 <span className="hidden sm:inline">WhatsApp</span>
-              </button>
+              </a>
             </div>
           </div>
 

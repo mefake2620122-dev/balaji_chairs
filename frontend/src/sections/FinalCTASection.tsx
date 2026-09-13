@@ -48,9 +48,10 @@ export const FinalCTASection: React.FC<FinalCTASectionProps> = ({ onOpenEnquiry 
           <Button
             variant="outline"
             size="lg"
-            onClick={handleWhatsApp}
+            href={generateWhatsAppUrl({ requirement: "Custom Workspace Quote" })}
+            target="_blank"
             icon={<MessageCircle className="w-4 h-4 text-[#25D366]" />}
-            className="w-full sm:w-auto"
+            className="w-full sm:w-auto cursor-pointer"
           >
             WhatsApp Us
           </Button>

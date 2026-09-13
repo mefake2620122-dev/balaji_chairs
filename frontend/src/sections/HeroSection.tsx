@@ -62,7 +62,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 size="lg"
                 onClick={onExploreProducts}
                 icon={<ArrowRight className="w-4 h-4" />}
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto cursor-pointer"
               >
                 Explore Products
               </Button>
@@ -70,9 +70,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <Button
                 variant="outline"
                 size="lg"
-                onClick={handleWhatsApp}
+                href={generateWhatsAppUrl()}
+                target="_blank"
                 icon={<MessageCircle className="w-4 h-4" />}
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto cursor-pointer"
               >
                 Talk to Us on WhatsApp
               </Button>
@@ -127,9 +128,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
       {/* Subtle Scroll Indicator */}
       <button
+        type="button"
         onClick={scrollToNext}
         aria-label="Scroll to next section"
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-1 text-xs font-medium text-neutral-400 hover:text-brand-black transition-colors"
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-1 text-xs font-medium text-neutral-400 hover:text-brand-black transition-colors cursor-pointer"
       >
         <span>Scroll to explore</span>
         <ChevronDown className="w-4 h-4 animate-bounce" />
