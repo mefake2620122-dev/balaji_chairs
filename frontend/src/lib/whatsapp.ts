@@ -9,8 +9,13 @@ export interface WhatsAppIntentOptions {
   quantity?: number | string;
 }
 
-export function generateWhatsAppUrl(options: WhatsAppIntentOptions = {}): string {
-  const phone = siteConfig.whatsappRaw;
+export function isMobileDevice(): boolean {
+  if (typeof window === 'undefined') return false;
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+    (typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 768px)').matches);
+}
+
+export function generateWhatsAppMessage(options: WhatsAppIntentOptions = {}): string {
   let message = `Hello Balaji Chairs,`;
 
   if (options.customerName) {
@@ -34,17 +39,59 @@ export function generateWhatsAppUrl(options: WhatsAppIntentOptions = {}): string
   }
 
   message += ` Please share catalog details and best quotation. Thank you!`;
+  return message;
+}
 
-  return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+export function generateWhatsAppUrl(options: WhatsAppIntentOptions = {}): string {
+  const phone = siteConfig.whatsappRaw;
+  const message = generateWhatsAppMessage(options);
+  // Using api.whatsapp.com which is an officially verified Android App Link & iOS Universal Link
+  return `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+}
+
+export function generateWhatsAppNativeUrl(options: WhatsAppIntentOptions = {}): string {
+  const phone = siteConfig.whatsappRaw;
+  const message = generateWhatsAppMessage(options);
+  return `whatsapp://send?phone=${phone}&text=${encodeURIComponent(message)}`;
 }
 
 export function openWhatsApp(options: WhatsAppIntentOptions = {}): void {
-  const url = generateWhatsAppUrl(options);
-  const a = document.createElement('a');
-  a.href = url;
-  a.target = '_blank';
-  a.rel = 'noopener noreferrer';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
+  if (typeof window === 'undefined') return;
+
+  const webUrl = generateWhatsAppUrl(options);
+  const nativeUrl = generateWhatsAppNativeUrl(options);
+
+  if (isMobileDevice()) {
+    // Direct navigation in current window preserves touch gesture activation.
+    // This allows Android / iOS to hand off to the native WhatsApp app directly
+    // without opening an empty child tab or being blocked by in-app browser webviews.
+    try {
+      window.location.href = nativeUrl;
+      setTimeout(() => {
+        if (!document.hidden) {
+          window.location.href = webUrl;
+        }
+      }, 1500);
+    } catch {
+      window.location.href = webUrl;
+    }
+  } else {
+    window.open(webUrl, '_blank', 'noopener,noreferrer');
+  }
 }
+
+export function openGoogleMaps(): void {
+  if (typeof window === 'undefined') return;
+
+  const isMobile = isMobileDevice();
+  const mapsUrl = siteConfig.googleMapsUrl;
+  const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${siteConfig.coordinates.lat},${siteConfig.coordinates.lng}`;
+
+  if (isMobile) {
+    // On mobile devices, direct window.location.href launches the native Google Maps / Apple Maps app
+    window.location.href = directionsUrl;
+  } else {
+    window.open(mapsUrl, '_blank', 'noopener,noreferrer');
+  }
+}
+

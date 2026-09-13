@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, Phone, MessageCircle, ArrowRight } from 'lucide-react';
 import { Logo } from './Logo';
 import { siteConfig } from '../data/siteConfig';
-import { generateWhatsAppUrl } from '../lib/whatsapp';
+import { generateWhatsAppUrl, openWhatsApp } from '../lib/whatsapp';
 
 export interface NavbarProps {
   currentPath: string;
@@ -36,9 +36,9 @@ export const Navbar: React.FC<NavbarProps> = ({
     { label: 'Contact', path: '/contact' }
   ];
 
-  const handleWhatsApp = () => {
-    const url = generateWhatsAppUrl();
-    window.open(url, '_blank', 'noopener,noreferrer');
+  const handleWhatsApp = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    openWhatsApp();
   };
 
   return (
@@ -84,8 +84,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="hidden lg:flex items-center gap-3">
           <a
             href={generateWhatsAppUrl()}
-            target="_blank"
-            rel="noopener noreferrer"
+            onClick={handleWhatsApp}
             className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/80 hover:bg-[#25D366] text-neutral-800 hover:text-white border border-black/10 text-xs font-semibold tracking-tight transition-all duration-300 shadow-subtle cursor-pointer"
           >
             <MessageCircle className="w-3.5 h-3.5" />

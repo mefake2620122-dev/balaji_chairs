@@ -22,6 +22,7 @@ export interface SiteConfig {
     lng: number;
   };
   googleMapsUrl: string;
+  googleMapsDirectionsUrl?: string;
   googleMapsEmbed: string;
   businessHours: {
     days: string;
@@ -56,7 +57,8 @@ export const siteConfig: SiteConfig = {
     lat: 26.5444,
     lng: 80.4878
   },
-  googleMapsUrl: "https://maps.google.com/?q=941+Anwar+Market+Daroga+Bagh+Civil+Lines+Unnao+Uttar+Pradesh+209801",
+  googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Balaji+Chairs+941+Anwar+Market+Daroga+Bagh+Civil+Lines+Unnao+Uttar+Pradesh+209801",
+  googleMapsDirectionsUrl: "https://www.google.com/maps/dir/?api=1&destination=26.5444,80.4878",
   googleMapsEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3572.2!2d80.4878!3d26.5444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399c470000000001%3A0x1!2sCivil%20Lines%2C%20Unnao%2C%20Uttar%20Pradesh%20209801!5e0!3m2!1sen!2sin!4v1700000000000",
   businessHours: [
     { days: "Monday – Saturday", hours: "10:00 AM – 8:30 PM" },

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { X, Phone, MessageCircle, ArrowRight, MapPin, Lock } from 'lucide-react';
 import { Logo } from './Logo';
 import { siteConfig } from '../data/siteConfig';
-import { generateWhatsAppUrl } from '../lib/whatsapp';
+import { generateWhatsAppUrl, openWhatsApp, openGoogleMaps } from '../lib/whatsapp';
 
 export interface MobileMenuProps {
   isOpen: boolean;
@@ -47,9 +47,9 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
     onClose();
   };
 
-  const handleWhatsApp = () => {
-    const url = generateWhatsAppUrl();
-    window.open(url, '_blank', 'noopener,noreferrer');
+  const handleWhatsApp = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    openWhatsApp();
   };
 
   return (
@@ -92,9 +92,13 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
 
         {/* Business Location & CTAs */}
         <div className="pt-8 mt-6 border-t border-black/10 space-y-3">
-          <div className="flex items-start gap-2.5 text-xs text-brand-muted px-2 mb-2">
+          <div
+            onClick={openGoogleMaps}
+            className="flex items-start gap-2.5 text-xs text-brand-muted px-2 mb-2 cursor-pointer hover:text-brand-black transition-colors"
+            title="Open in Google Maps"
+          >
             <MapPin className="w-4 h-4 text-brand-red shrink-0 mt-0.5" />
-            <span>941, Anwar Market, Daroga Bagh, Civil Lines, Unnao – 209801</span>
+            <span className="underline decoration-dotted underline-offset-2">941, Anwar Market, Daroga Bagh, Civil Lines, Unnao – 209801</span>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
@@ -108,8 +112,10 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
 
             <a
               href={generateWhatsAppUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={(e) => {
+                e.preventDefault();
+                openWhatsApp();
+              }}
               className="flex items-center justify-center gap-2 py-3.5 px-4 rounded-2xl bg-[#25D366] text-white text-xs font-semibold tracking-tight shadow-sm active:scale-95 transition-all cursor-pointer"
             >
               <MessageCircle className="w-4 h-4 fill-white" />

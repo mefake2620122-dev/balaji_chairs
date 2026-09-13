@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowRight, MessageCircle, ChevronDown, ShieldCheck, MapPin } from 'lucide-react';
 import { Button } from '../components/Button';
 import { siteConfig } from '../data/siteConfig';
-import { generateWhatsAppUrl } from '../lib/whatsapp';
+import { generateWhatsAppUrl, openWhatsApp } from '../lib/whatsapp';
 
 export interface HeroSectionProps {
   onExploreProducts: () => void;
@@ -13,9 +13,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onExploreProducts,
   onOpenEnquiry
 }) => {
-  const handleWhatsApp = () => {
-    const url = generateWhatsAppUrl();
-    window.open(url, '_blank', 'noopener,noreferrer');
+  const handleWhatsApp = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    openWhatsApp();
   };
 
   const scrollToNext = () => {
@@ -71,7 +71,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 variant="outline"
                 size="lg"
                 href={generateWhatsAppUrl()}
-                target="_blank"
+                onClick={handleWhatsApp}
                 icon={<MessageCircle className="w-4 h-4" />}
                 className="w-full sm:w-auto cursor-pointer"
               >

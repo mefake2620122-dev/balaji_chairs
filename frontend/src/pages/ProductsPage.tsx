@@ -265,9 +265,13 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                   href={generateWhatsAppUrl({
                     productName: `${activeProductModal.name} (${selectedVariant})`
                   })}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#25D366] text-white text-xs font-semibold hover:bg-[#20bd5a] transition-all"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    openWhatsApp({
+                      productName: `${activeProductModal.name} (${selectedVariant})`
+                    });
+                  }}
+                  className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#25D366] text-white text-xs font-semibold hover:bg-[#20bd5a] transition-all cursor-pointer"
                 >
                   <MessageCircle className="w-4 h-4 fill-white" />
                   <span>WhatsApp Quote</span>

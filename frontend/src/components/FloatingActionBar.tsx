@@ -1,7 +1,7 @@
 import React from 'react';
 import { Phone, MessageCircle, Sparkles } from 'lucide-react';
 import { siteConfig } from '../data/siteConfig';
-import { generateWhatsAppUrl } from '../lib/whatsapp';
+import { generateWhatsAppUrl, openWhatsApp } from '../lib/whatsapp';
 
 interface FloatingActionBarProps {
   onOpenEnquiry?: () => void;
@@ -10,9 +10,9 @@ interface FloatingActionBarProps {
 export const FloatingActionBar: React.FC<FloatingActionBarProps> = ({
   onOpenEnquiry
 }) => {
-  const handleWhatsApp = () => {
-    const url = generateWhatsAppUrl({ requirement: "General Office Seating Inquiry" });
-    window.open(url, '_blank', 'noopener,noreferrer');
+  const handleWhatsApp = (e: React.MouseEvent) => {
+    e.preventDefault();
+    openWhatsApp({ requirement: "General Office Seating Inquiry" });
   };
 
   return (
@@ -30,8 +30,7 @@ export const FloatingActionBar: React.FC<FloatingActionBarProps> = ({
         {/* WhatsApp Button */}
         <a
           href={generateWhatsAppUrl({ requirement: "General Office Seating Inquiry" })}
-          target="_blank"
-          rel="noopener noreferrer"
+          onClick={handleWhatsApp}
           className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#25D366] text-white text-xs font-semibold tracking-tight active:scale-[0.98] transition-all shadow-sm cursor-pointer"
         >
           <MessageCircle className="w-4 h-4 fill-white" />

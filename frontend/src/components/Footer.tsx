@@ -2,7 +2,7 @@ import React from 'react';
 import { Phone, MessageCircle, MapPin, Clock, ArrowUpRight, Lock } from 'lucide-react';
 import { Logo } from './Logo';
 import { siteConfig } from '../data/siteConfig';
-import { generateWhatsAppUrl } from '../lib/whatsapp';
+import { generateWhatsAppUrl, openWhatsApp, openGoogleMaps } from '../lib/whatsapp';
 
 export interface FooterProps {
   onNavigate: (path: string) => void;
@@ -12,9 +12,14 @@ export interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnquiry }) => {
   const currentYear = new Date().getFullYear();
 
-  const handleWhatsApp = () => {
-    const url = generateWhatsAppUrl();
-    window.open(url, '_blank', 'noopener,noreferrer');
+  const handleWhatsApp = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    openWhatsApp();
+  };
+
+  const handleDirections = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    openGoogleMaps();
   };
 
   return (
@@ -40,8 +45,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnquiry }) => 
               </a>
               <a
                 href={generateWhatsAppUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
+                onClick={handleWhatsApp}
                 className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#25D366]/20 hover:bg-[#25D366] text-white text-xs font-semibold tracking-tight transition-colors border border-[#25D366]/30 cursor-pointer"
               >
                 <MessageCircle className="w-3.5 h-3.5 text-[#25D366] group-hover:text-white" />
@@ -139,9 +143,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnquiry }) => 
             <div className="pt-2">
               <a
                 href={siteConfig.googleMapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs text-neutral-300 hover:text-white underline underline-offset-4"
+                onClick={handleDirections}
+                className="inline-flex items-center gap-1.5 text-xs text-neutral-300 hover:text-white underline underline-offset-4 cursor-pointer"
               >
                 <span>Open in Google Maps</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />

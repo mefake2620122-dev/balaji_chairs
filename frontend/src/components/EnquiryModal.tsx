@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, Phone, MessageCircle, Send, CheckCircle } from 'lucide-react';
 import { Button } from './Button';
-import { generateWhatsAppUrl } from '../lib/whatsapp';
+import { generateWhatsAppUrl, openWhatsApp } from '../lib/whatsapp';
 import { submitEnquiry } from '../lib/api';
 
 export interface EnquiryModalProps {
@@ -79,13 +79,13 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
     }
   };
 
-  const handleDirectWhatsApp = () => {
-    const url = generateWhatsAppUrl({
+  const handleDirectWhatsApp = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    openWhatsApp({
       customerName: name,
       productName: product || undefined,
       requirement: requirement || undefined
     });
-    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -141,7 +141,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                     productName: product || undefined,
                     requirement: requirement || undefined
                   })}
-                  target="_blank"
+                  onClick={handleDirectWhatsApp}
                   icon={<MessageCircle className="w-4 h-4" />}
                   className="cursor-pointer"
                 >

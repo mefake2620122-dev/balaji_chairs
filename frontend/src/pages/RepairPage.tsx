@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Wrench, Phone, CheckCircle, ArrowRight, MessageCircle, AlertCircle } from 'lucide-react';
 import { SectionHeading } from '../components/SectionHeading';
 import { Button } from '../components/Button';
-import { services, ChairService } from '../data/services';
+import { services } from '../data/services';
 import { siteConfig } from '../data/siteConfig';
 import { submitRepairRequest } from '../lib/api';
-import { generateWhatsAppUrl } from '../lib/whatsapp';
+import { generateWhatsAppUrl, openWhatsApp } from '../lib/whatsapp';
 
 export interface RepairPageProps {
   onSuccess?: (msg: string) => void;
@@ -78,13 +78,13 @@ export const RepairPage: React.FC<RepairPageProps> = ({ onSuccess }) => {
     }
   };
 
-  const handleWhatsApp = () => {
+  const handleWhatsApp = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
     const issuesText = selectedIssues.join(', ');
-    const url = generateWhatsAppUrl({
+    openWhatsApp({
       customerName: name,
-      serviceType: `${chairType} repair (${issuesText}, Qty: ${quantity})`
+      serviceType: `${chairType} repair (${issuesText || 'General Repair'}, Qty: ${quantity})`
     });
-    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -137,7 +137,7 @@ export const RepairPage: React.FC<RepairPageProps> = ({ onSuccess }) => {
                     variant="primary"
                     size="sm"
                     href={generateWhatsAppUrl({ serviceType: selectedIssues.join(', ') || "Office Chair Repair" })}
-                    target="_blank"
+                    onClick={handleWhatsApp}
                     icon={<MessageCircle className="w-4 h-4" />}
                     className="cursor-pointer"
                   >
@@ -279,8 +279,10 @@ export const RepairPage: React.FC<RepairPageProps> = ({ onSuccess }) => {
 
                   <a
                     href={generateWhatsAppUrl({ serviceType: "Urgent Chair Repair Evaluation" })}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      openWhatsApp({ serviceType: "Urgent Chair Repair Evaluation" });
+                    }}
                     className="flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#25D366] text-white text-xs font-bold hover:bg-[#20bd5a] transition-all shadow-sm cursor-pointer"
                   >
                     <MessageCircle className="w-4 h-4 fill-white" />

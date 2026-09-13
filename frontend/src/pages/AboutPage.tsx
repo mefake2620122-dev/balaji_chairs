@@ -3,7 +3,7 @@ import { MapPin, Phone, MessageCircle, ShieldCheck, HeartHandshake, Award } from
 import { SectionHeading } from '../components/SectionHeading';
 import { Button } from '../components/Button';
 import { siteConfig } from '../data/siteConfig';
-import { generateWhatsAppUrl } from '../lib/whatsapp';
+import { generateWhatsAppUrl, openWhatsApp } from '../lib/whatsapp';
 
 export interface AboutPageProps {
   onOpenEnquiry: () => void;
@@ -11,9 +11,9 @@ export interface AboutPageProps {
 }
 
 export const AboutPage: React.FC<AboutPageProps> = ({ onOpenEnquiry, onNavigate }) => {
-  const handleWhatsApp = () => {
-    const url = generateWhatsAppUrl({ requirement: "About Balaji Chairs & Showroom Visit" });
-    window.open(url, '_blank', 'noopener,noreferrer');
+  const handleWhatsApp = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    openWhatsApp({ requirement: "About Balaji Chairs & Showroom Visit" });
   };
 
   return (
@@ -119,7 +119,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenEnquiry, onNavigate 
               variant="dark"
               size="md"
               href={generateWhatsAppUrl({ requirement: "About Balaji Chairs & Showroom Visit" })}
-              target="_blank"
+              onClick={handleWhatsApp}
               icon={<MessageCircle className="w-4 h-4 text-[#25D366]" />}
               className="cursor-pointer"
             >

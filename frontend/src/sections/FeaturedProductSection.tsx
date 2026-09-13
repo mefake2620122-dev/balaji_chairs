@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { ArrowRight, Check, Sparkles, MessageCircle } from 'lucide-react';
 import { Button } from '../components/Button';
 import { products, Product } from '../data/products';
-import { generateWhatsAppUrl } from '../lib/whatsapp';
+import { siteConfig } from '../data/siteConfig';
+import { generateWhatsAppUrl, openWhatsApp } from '../lib/whatsapp';
 
 export interface FeaturedProductSectionProps {
-  onOpenEnquiry: (productName: string) => void;
+  onOpenEnquiry: (productName?: string) => void;
 }
 
 export const FeaturedProductSection: React.FC<FeaturedProductSectionProps> = ({
@@ -15,11 +16,11 @@ export const FeaturedProductSection: React.FC<FeaturedProductSectionProps> = ({
   const featuredProduct: Product = products[0];
   const [selectedVariant, setSelectedVariant] = useState(featuredProduct.variants[0]);
 
-  const handleWhatsApp = () => {
-    const url = generateWhatsAppUrl({
+  const handleWhatsApp = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    openWhatsApp({
       productName: `${featuredProduct.name} (${selectedVariant})`
     });
-    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -118,7 +119,7 @@ export const FeaturedProductSection: React.FC<FeaturedProductSectionProps> = ({
                 variant="outline"
                 size="md"
                 href={generateWhatsAppUrl({ productName: `${featuredProduct.name} (${selectedVariant})` })}
-                target="_blank"
+                onClick={handleWhatsApp}
                 icon={<MessageCircle className="w-4 h-4 text-[#25D366]" />}
                 className="w-full sm:w-auto cursor-pointer"
               >

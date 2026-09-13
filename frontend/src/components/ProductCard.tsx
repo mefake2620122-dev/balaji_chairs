@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 import { Product } from '../data/products';
-import { generateWhatsAppUrl } from '../lib/whatsapp';
+import { generateWhatsAppUrl, openWhatsApp } from '../lib/whatsapp';
 
 import { PerspectiveCard } from './PerspectiveCard';
 
@@ -18,8 +18,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
   const handleWhatsApp = (e: React.MouseEvent) => {
     e.stopPropagation();
-    const url = generateWhatsAppUrl({ productName: product.name });
-    window.open(url, '_blank', 'noopener,noreferrer');
+    e.preventDefault();
+    openWhatsApp({ productName: product.name });
   };
 
   return (
@@ -67,11 +67,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           <div className="flex items-center gap-2">
             <a
               href={generateWhatsAppUrl({ productName: product.name })}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
+              onClick={handleWhatsApp}
               title="Quick WhatsApp Enquiry"
-              className="p-2 rounded-full bg-neutral-100 text-neutral-700 hover:bg-[#25D366] hover:text-white transition-colors flex items-center justify-center"
+              className="p-2 rounded-full bg-neutral-100 text-neutral-700 hover:bg-[#25D366] hover:text-white transition-colors flex items-center justify-center cursor-pointer"
             >
               <MessageCircle className="w-4 h-4" />
             </a>

@@ -3,10 +3,11 @@ import { CheckCircle, ArrowRight, MessageCircle } from 'lucide-react';
 import { SectionHeading } from '../components/SectionHeading';
 import { Button } from '../components/Button';
 import { solutions } from '../data/solutions';
-import { generateWhatsAppUrl } from '../lib/whatsapp';
+import { siteConfig } from '../data/siteConfig';
+import { generateWhatsAppUrl, openWhatsApp } from '../lib/whatsapp';
 
 export interface SolutionsPageProps {
-  onOpenEnquiry: (requirement: string) => void;
+  onOpenEnquiry: (requirement?: string) => void;
   onNavigate: (path: string) => void;
 }
 
@@ -14,9 +15,9 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({
   onOpenEnquiry,
   onNavigate
 }) => {
-  const handleWhatsApp = (spaceTitle: string) => {
-    const url = generateWhatsAppUrl({ requirement: `Office Solution for ${spaceTitle}` });
-    window.open(url, '_blank', 'noopener,noreferrer');
+  const handleWhatsApp = (spaceTitle: string, e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    openWhatsApp({ requirement: `Office Solution for ${spaceTitle}` });
   };
 
   return (
@@ -99,7 +100,7 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({
                         variant="outline"
                         size="sm"
                         href={generateWhatsAppUrl({ requirement: `Office Solution for ${solution.title}` })}
-                        target="_blank"
+                        onClick={(e) => handleWhatsApp(solution.title, e)}
                         icon={<MessageCircle className="w-4 h-4 text-[#25D366]" />}
                         className="cursor-pointer"
                       >

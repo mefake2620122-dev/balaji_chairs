@@ -4,7 +4,7 @@ import { SectionHeading } from '../components/SectionHeading';
 import { Button } from '../components/Button';
 import { Lightbox } from '../components/Lightbox';
 import { projects, ProjectItem } from '../data/projects';
-import { generateWhatsAppUrl } from '../lib/whatsapp';
+import { generateWhatsAppUrl, openWhatsApp } from '../lib/whatsapp';
 
 export interface ProjectsPageProps {
   onNavigate: (path: string) => void;
@@ -150,7 +150,10 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
                       variant="outline"
                       size="sm"
                       href={generateWhatsAppUrl({ requirement: `I am interested in a workspace setup similar to "${project.title}" in Unnao.` })}
-                      target="_blank"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        openWhatsApp({ requirement: `I am interested in a workspace setup similar to "${project.title}" in Unnao.` });
+                      }}
                       icon={<MessageCircle className="w-4 h-4 text-[#25D366]" />}
                     >
                       WhatsApp Us
@@ -190,7 +193,10 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
               variant="dark"
               size="md"
               href={generateWhatsAppUrl({ requirement: "Commercial Bulk Seating Consultation & Site Measurement" })}
-              target="_blank"
+              onClick={(e) => {
+                e.preventDefault();
+                openWhatsApp({ requirement: "Commercial Bulk Seating Consultation & Site Measurement" });
+              }}
               icon={<MessageCircle className="w-4 h-4 text-[#25D366]" />}
               className="w-full sm:w-auto"
             >

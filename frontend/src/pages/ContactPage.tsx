@@ -5,7 +5,7 @@ import { Button } from '../components/Button';
 import { siteConfig } from '../data/siteConfig';
 import { faqs } from '../data/faqs';
 import { submitEnquiry } from '../lib/api';
-import { generateWhatsAppUrl } from '../lib/whatsapp';
+import { generateWhatsAppUrl, openWhatsApp, openGoogleMaps } from '../lib/whatsapp';
 
 export interface ContactPageProps {
   onSuccess?: (msg: string) => void;
@@ -44,12 +44,17 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onSuccess }) => {
     }
   };
 
-  const handleWhatsApp = () => {
-    const url = generateWhatsAppUrl({
+  const handleWhatsApp = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    openWhatsApp({
       customerName: name || undefined,
       requirement: requirement || undefined
     });
-    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleDirections = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    openGoogleMaps();
   };
 
   return (
@@ -114,8 +119,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onSuccess }) => {
             <div className="pt-4 mt-4 border-t border-neutral-100">
               <a
                 href={generateWhatsAppUrl({ requirement: "Contact Page Chat" })}
-                target="_blank"
-                rel="noopener noreferrer"
+                onClick={handleWhatsApp}
                 className="text-xs font-bold text-[#25D366] hover:underline inline-flex items-center gap-1 cursor-pointer"
               >
                 <span>Open WhatsApp Chat</span>
@@ -142,9 +146,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onSuccess }) => {
             <div className="pt-4 mt-4 border-t border-neutral-100">
               <a
                 href={siteConfig.googleMapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs font-bold text-brand-black hover:text-brand-red inline-flex items-center gap-1"
+                onClick={handleDirections}
+                className="text-xs font-bold text-brand-black hover:text-brand-red inline-flex items-center gap-1 cursor-pointer"
               >
                 <span>Get Driving Directions</span>
               </a>

@@ -68,12 +68,53 @@ export const Button: React.FC<ButtonProps> = ({
   );
 
   if (href) {
+    const isExternalApp =
+      href.startsWith('tel:') ||
+      href.startsWith('mailto:') ||
+      href.startsWith('whatsapp:') ||
+      href.includes('wa.me') ||
+      href.includes('api.whatsapp.com') ||
+      href.includes('maps.google.com') ||
+      href.includes('google.com/maps');
+
+    const isMobile = typeof window !== 'undefined' &&
+      (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768);
+
+    // On mobile, never open deep links in target="_blank" as it causes popup blockers or tab bounce-backs
+    const effectiveTarget = isMobile && isExternalApp ? undefined : target;
+    const effectiveRel = effectiveTarget === '_blank' ? 'noopener noreferrer' : undefined;
+
+    const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+      if (props.onClick) {
+        props.onClick(e as any);
+      }
+      if (isMobile && (href.includes('api.whatsapp.com') || href.includes('wa.me'))) {
+        e.preventDefault();
+        // Extract query or text if available to trigger native protocol
+        try {
+          const parsed = new URL(href);
+          const phone = parsed.searchParams.get('phone') || '917880353900';
+          const text = parsed.searchParams.get('text') || '';
+          const nativeUrl = `whatsapp://send?phone=${phone}&text=${encodeURIComponent(text)}`;
+          window.location.href = nativeUrl;
+          setTimeout(() => {
+            if (!document.hidden) {
+              window.location.href = href;
+            }
+          }, 1500);
+        } catch {
+          window.location.href = href;
+        }
+      }
+    };
+
     return (
       <a
         href={href}
-        target={target}
-        rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+        target={effectiveTarget}
+        rel={effectiveRel}
         className={cn(baseStyles, variants[variant], sizes[size], className)}
+        onClick={handleAnchorClick}
         {...(props as any)}
       >
         {content}

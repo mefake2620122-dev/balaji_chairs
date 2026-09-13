@@ -2,16 +2,16 @@ import React from 'react';
 import { ArrowRight, MessageCircle, Phone } from 'lucide-react';
 import { Button } from '../components/Button';
 import { siteConfig } from '../data/siteConfig';
-import { generateWhatsAppUrl } from '../lib/whatsapp';
+import { generateWhatsAppUrl, openWhatsApp } from '../lib/whatsapp';
 
 export interface FinalCTASectionProps {
   onOpenEnquiry: () => void;
 }
 
 export const FinalCTASection: React.FC<FinalCTASectionProps> = ({ onOpenEnquiry }) => {
-  const handleWhatsApp = () => {
-    const url = generateWhatsAppUrl();
-    window.open(url, '_blank', 'noopener,noreferrer');
+  const handleWhatsApp = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    openWhatsApp({ requirement: "Custom Workspace Quote" });
   };
 
   return (
@@ -49,7 +49,7 @@ export const FinalCTASection: React.FC<FinalCTASectionProps> = ({ onOpenEnquiry 
             variant="outline"
             size="lg"
             href={generateWhatsAppUrl({ requirement: "Custom Workspace Quote" })}
-            target="_blank"
+            onClick={handleWhatsApp}
             icon={<MessageCircle className="w-4 h-4 text-[#25D366]" />}
             className="w-full sm:w-auto cursor-pointer"
           >

@@ -3,12 +3,17 @@ import { MapPin, Phone, MessageCircle, Navigation, Clock } from 'lucide-react';
 import { SectionHeading } from '../components/SectionHeading';
 import { Button } from '../components/Button';
 import { siteConfig } from '../data/siteConfig';
-import { generateWhatsAppUrl } from '../lib/whatsapp';
+import { generateWhatsAppUrl, openWhatsApp, openGoogleMaps } from '../lib/whatsapp';
 
 export const ShowroomSection: React.FC = () => {
-  const handleWhatsApp = () => {
-    const url = generateWhatsAppUrl({ requirement: "Visiting Showroom Inquiry" });
-    window.open(url, '_blank', 'noopener,noreferrer');
+  const handleWhatsApp = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    openWhatsApp({ requirement: "Visiting Showroom Inquiry" });
+  };
+
+  const handleDirections = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    openGoogleMaps();
   };
 
   return (
@@ -88,9 +93,8 @@ export const ShowroomSection: React.FC = () => {
             <div className="pt-8 border-t border-black/10 flex flex-col sm:flex-row gap-3">
               <a
                 href={siteConfig.googleMapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-brand-black text-white text-xs font-bold tracking-tight hover:bg-brand-graphite transition-all shadow-sm"
+                onClick={handleDirections}
+                className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-brand-black text-white text-xs font-bold tracking-tight hover:bg-brand-graphite transition-all shadow-sm cursor-pointer"
               >
                 <Navigation className="w-4 h-4 text-brand-red" />
                 <span>Get Directions</span>
@@ -98,7 +102,7 @@ export const ShowroomSection: React.FC = () => {
 
               <a
                 href={`tel:${siteConfig.phoneRaw}`}
-                className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-white text-brand-black border border-black/10 text-xs font-bold tracking-tight hover:bg-neutral-50 transition-all"
+                className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-white text-brand-black border border-black/10 text-xs font-bold tracking-tight hover:bg-neutral-50 transition-all cursor-pointer"
               >
                 <Phone className="w-4 h-4 text-emerald-600" />
                 <span>Call Now</span>
@@ -106,8 +110,7 @@ export const ShowroomSection: React.FC = () => {
 
               <a
                 href={generateWhatsAppUrl({ requirement: "Showroom Visit & Directions" })}
-                target="_blank"
-                rel="noopener noreferrer"
+                onClick={handleWhatsApp}
                 className="flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-[#25D366] text-white text-xs font-bold tracking-tight hover:bg-[#20bd5a] transition-all shadow-sm cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4 fill-white" />
