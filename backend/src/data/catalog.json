@@ -1,0 +1,331 @@
+{
+  "siteConfig": {
+    "name": "Balaji Chairs™",
+    "legalName": "Balaji Chairs - Innovative Creations",
+    "tagline": "Innovative Creations",
+    "phone": "+91 78803 53900",
+    "phoneRaw": "+917880353900",
+    "whatsapp": "+91 78803 53900",
+    "whatsappNumber": "917880353900",
+    "email": "contact@balajichairs.in",
+    "address": {
+      "line1": "941, Anwar Market",
+      "locality": "Daroga Bagh",
+      "area": "Civil Lines",
+      "city": "Unnao",
+      "state": "Uttar Pradesh",
+      "pincode": "209801",
+      "country": "India"
+    },
+    "coordinates": {
+      "lat": 26.5444,
+      "lng": 80.4878
+    },
+    "googleMapsEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14300.0!2d80.48!3d26.54!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399c470000000001%3A0x1!2sCivil%20Lines%2C%20Unnao%2C%20Uttar%20Pradesh%20209801!5e0!3m2!1sen!2sin!4v1700000000000",
+    "businessHours": [
+      { "days": "Monday – Saturday", "hours": "10:00 AM – 8:30 PM" },
+      { "days": "Sunday", "hours": "11:00 AM – 6:00 PM" }
+    ]
+  },
+  "categories": [
+    {
+      "id": "revolving-chairs",
+      "number": "01",
+      "name": "Revolving Chairs",
+      "shortDescription": "Ergonomic high-back, mid-back, and mesh revolving chairs engineered for all-day posture support.",
+      "image": "/images/categories/revolving-chairs.webp",
+      "count": 12
+    },
+    {
+      "id": "visitor-chairs",
+      "number": "02",
+      "name": "Visitor Chairs",
+      "shortDescription": "Sturdy cantilever frames and premium cushioned visitor seating for conference, cabin, and reception.",
+      "image": "/images/categories/visitor-chairs.webp",
+      "count": 8
+    },
+    {
+      "id": "revolving-stools",
+      "number": "03",
+      "name": "Revolving Stools",
+      "shortDescription": "Pneumatic height-adjustable stools with smooth 360-degree swivel for counters, labs, and drafting desks.",
+      "image": "/images/categories/revolving-stools.webp",
+      "count": 6
+    },
+    {
+      "id": "office-tables",
+      "number": "04",
+      "name": "Office Tables",
+      "shortDescription": "Architectural executive desks, modular workstation setups, and conference tables crafted for modern teams.",
+      "image": "/images/categories/office-tables.webp",
+      "count": 7
+    }
+  ],
+  "products": [
+    {
+      "id": "bc-exec-01",
+      "name": "Aura High-Back Executive Chair",
+      "category": "revolving-chairs",
+      "categoryLabel": "Revolving Chair",
+      "tagline": "Flagship Presidential Seating",
+      "description": "Premium top-grain leatherette high-back revolving chair with contoured lumbar support, synchronized tilt-lock mechanism, and heavy-duty die-cast aluminum star base.",
+      "priceLabel": "Price on Request",
+      "image": "/images/products/aura-executive-highback.webp",
+      "isFeatured": true,
+      "specs": {
+        "Mechanism": "Synchronous Multi-position Tilt Lock",
+        "Base": "Chrome / Polished Die-cast Metal 5-Prong Star Base",
+        "Castors": "60mm Nylon Twin Wheel PU Castors",
+        "GasLift": "Class 4 Heavy-duty Pneumatic Cylinder (tested up to 150 kg)",
+        "Upholstery": "High-density Molded Foam with Premium Breathable Leatherette",
+        "Armrests": "Padded Soft-touch Ergonomic Fixed Armrests"
+      },
+      "variants": ["Deep Brown", "Classic Obsidian Black", "Cognac Tan"],
+      "dimensions": "Height: 118–128 cm | Width: 65 cm | Depth: 68 cm"
+    },
+    {
+      "id": "bc-mesh-02",
+      "name": "Verve Ergonomic Mesh Task Chair",
+      "category": "revolving-chairs",
+      "categoryLabel": "Revolving Chair",
+      "tagline": "All-Day Breathable Workstation Seating",
+      "description": "High-tensile Korean mesh backrest paired with adaptive lumbar cushion and pneumatic height adjustment for high-productivity desk setups.",
+      "priceLabel": "Price on Request",
+      "image": "/images/products/verve-mesh-task.webp",
+      "isFeatured": true,
+      "specs": {
+        "Mechanism": "Push-back Tilt Mechanism with Tension Control",
+        "Base": "Reinforced Glass-filled Nylon Star Base",
+        "Castors": "Smooth Gliding Twin Castors",
+        "GasLift": "Class 3 Gas-lift certified for 120 kg capacity",
+        "Upholstery": "High-airflow Mesh with Waterfall Edge Seat Foam",
+        "Armrests": "Height Adjustable T-Armrests with PU Pads"
+      },
+      "variants": ["All Black", "Grey & White Frame", "Slate Blue"],
+      "dimensions": "Height: 98–108 cm | Width: 60 cm | Depth: 58 cm"
+    },
+    {
+      "id": "bc-visit-01",
+      "name": "Matrix Cantilever Visitor Chair",
+      "category": "visitor-chairs",
+      "categoryLabel": "Visitor Chair",
+      "tagline": "Architectural Durability & Comfort",
+      "description": "Heavy-gauge tubular MS chrome frame visitor chair with anti-tip glides and high-density cushioned seat and backrest.",
+      "priceLabel": "Price on Request",
+      "image": "/images/products/matrix-cantilever-visitor.webp",
+      "isFeatured": true,
+      "specs": {
+        "Frame": "Heavy-duty CRCA Mild Steel Oval Tube in Mirror Chrome",
+        "Glides": "Abrasion-resistant Non-marking Floor Protectors",
+        "Cushioning": "45-Density High Resilient Molded PU Cushion",
+        "Armrests": "Integrated Steel Frame with Soft Sleeve Overlays",
+        "Stackable": "Self-standing Stable Architecture"
+      },
+      "variants": ["Executive Black", "Navy Blue", "Charcoal Grey"],
+      "dimensions": "Height: 92 cm | Width: 55 cm | Depth: 58 cm"
+    },
+    {
+      "id": "bc-visit-02",
+      "name": "Linea Sleek Leatherette Cabin Chair",
+      "category": "visitor-chairs",
+      "categoryLabel": "Visitor Chair",
+      "tagline": "Refined Executive Conference Seating",
+      "description": "Low-profile ribbed leatherette visitor chair designed for executive chambers, client consultation desks, and conference suites.",
+      "priceLabel": "Price on Request",
+      "image": "/images/products/linea-cabin-visitor.webp",
+      "isFeatured": false,
+      "specs": {
+        "Frame": "Seamless Solid Chrome S-Shape Cantilever",
+        "Upholstery": "Stitched Ribbed Vegan Leatherette",
+        "Armrests": "Chromed Arms with Removable Zipper Sleeves",
+        "Support": "Reinforced Lumbar Contour"
+      },
+      "variants": ["Jet Black", "Ivory White", "Camel Brown"],
+      "dimensions": "Height: 90 cm | Width: 54 cm | Depth: 56 cm"
+    },
+    {
+      "id": "bc-stool-01",
+      "name": "Apex Pneumatic Swivel Stool",
+      "category": "revolving-stools",
+      "categoryLabel": "Revolving Stool",
+      "tagline": "Dynamic 360° Counter & Lab Stool",
+      "description": "Compact circular cushioned revolving stool with 360-degree rotation, pneumatic height lever, and chrome-plated steel base with footrest ring option.",
+      "priceLabel": "Price on Request",
+      "image": "/images/products/apex-swivel-stool.webp",
+      "isFeatured": true,
+      "specs": {
+        "Rotation": "360-degree Ball-bearing Fluid Swivel",
+        "Seat": "75mm Thick High-density High-resilience Foam",
+        "Base": "Chrome Star Base with Heavy Castors",
+        "HeightRange": "45 cm to 62 cm Quick Gas-lift Range",
+        "Footrest": "Optional Integrated Chrome Foot Ring"
+      },
+      "variants": ["Black Vinyl", "Maroon", "Royal Blue"],
+      "dimensions": "Diameter: 36 cm | Height: 45–62 cm"
+    },
+    {
+      "id": "bc-table-01",
+      "name": "Prism Executive Desk System",
+      "category": "office-tables",
+      "categoryLabel": "Office Table",
+      "tagline": "Architectural Executive Workspace",
+      "description": "High-grade pre-laminated engineered wood table with powder-coated steel loop legs, built-in wire management conduits, and matching mobile pedestal drawer unit.",
+      "priceLabel": "Price on Request",
+      "image": "/images/products/prism-executive-table.webp",
+      "isFeatured": true,
+      "specs": {
+        "Tabletop": "25mm Prelam Action TESA Board with 2mm PVC Edge Bending",
+        "Understructure": "50x50mm Heavy-gauge MS Pipe with Matte Powder Coating",
+        "WireManagement": "Integrated Aluminum Brush Grommet Box",
+        "Storage": "3-Drawer Lockable Mobile Pedestal with Telescopic Channels"
+      },
+      "variants": ["Natural Walnut & Black", "Bavarian Beech & Silver", "Smoked Oak & Charcoal"],
+      "dimensions": "Length: 150–180 cm | Width: 75–90 cm | Height: 75 cm"
+    },
+    {
+      "id": "bc-table-02",
+      "name": "Nexus Modular 4-Person Workstation",
+      "category": "office-tables",
+      "categoryLabel": "Office Table",
+      "tagline": "Collaborative Team Workstations",
+      "description": "Space-optimized back-to-back 4-cluster workstation with acoustic fabric divider screens, integrated power raceways, and ergonomic wire channels.",
+      "priceLabel": "Price on Request",
+      "image": "/images/products/nexus-workstation.webp",
+      "isFeatured": false,
+      "specs": {
+        "Structure": "Modular Steel Frame with Leveling Screws",
+        "Dividers": "Pin-up Acoustic Fabric / Magnetic Glass Privacy Screen",
+        "PowerRaceway": "Dual Level Wire Management for Data & Power Cable Separation",
+        "Modularity": "Easily expandable from 2 to 20 seats"
+      },
+      "variants": ["Warm White & Charcoal", "Light Pine & White"],
+      "dimensions": "Per Seat: 120 x 60 cm | Height: 75 cm / 105 cm Screen"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "executive-spaces",
+      "title": "Executive Spaces",
+      "tagline": "Presence, Authority & All-Day Comfort",
+      "description": "High-back leatherette chairs, architectural executive desks, and tailored storage credenzas tailored for leadership cabins and director suites.",
+      "recommendedProducts": ["Aura High-Back Executive Chair", "Prism Executive Desk System"],
+      "image": "/images/solutions/executive-spaces.webp"
+    },
+    {
+      "id": "workstations",
+      "title": "Workstations",
+      "tagline": "Ergonomics for Continuous Productivity",
+      "description": "Breathable mesh task seating matched with modular cluster tables, cable raceways, and privacy dividers to empower modern team efficiency.",
+      "recommendedProducts": ["Verve Ergonomic Mesh Task Chair", "Nexus Modular 4-Person Workstation"],
+      "image": "/images/solutions/workstations.webp"
+    },
+    {
+      "id": "meeting-areas",
+      "title": "Meeting & Boardrooms",
+      "tagline": "Focused Discussions in Balanced Seating",
+      "description": "Cantilever and medium-back revolving seating paired with conference tables that inspire clear thinking, alignment, and client confidence.",
+      "recommendedProducts": ["Linea Sleek Leatherette Cabin Chair", "Matrix Cantilever Visitor Chair"],
+      "image": "/images/solutions/meeting-areas.webp"
+    },
+    {
+      "id": "reception-waiting",
+      "title": "Reception & Waiting Lounges",
+      "tagline": "The First Impression of Your Business",
+      "description": "Welcoming visitor chairs, reception greeting desks, and durable revolving stools designed to make every client feel valued from the first step.",
+      "recommendedProducts": ["Matrix Cantilever Visitor Chair", "Apex Pneumatic Swivel Stool"],
+      "image": "/images/solutions/reception-waiting.webp"
+    }
+  ],
+  "services": [
+    {
+      "id": "hydraulic-gaslift",
+      "title": "Hydraulic & Gas-Lift Replacement",
+      "description": "Is your chair sinking or losing height? We install certified Class 3 and Class 4 nitrogen gas-lift cylinders with precision fitment.",
+      "turnaround": "Same Day / Next Day in Unnao",
+      "icon": "Gauge"
+    },
+    {
+      "id": "caster-wheels",
+      "title": "Heavy-Duty Caster Wheel Replacement",
+      "description": "Replace jammed, broken, or floor-scratching wheels with smooth twin-wheel nylon or soft PU roller castors.",
+      "turnaround": "Instant Replacement",
+      "icon": "RotateCw"
+    },
+    {
+      "id": "armrest-replacement",
+      "title": "Armrest Repair & Replacement",
+      "description": "Fix loose, cracked, or missing arm supports with OEM-grade fixed or adjustable T-arm assemblies.",
+      "turnaround": "1-2 Days",
+      "icon": "ShieldCheck"
+    },
+    {
+      "id": "cushion-upholstery",
+      "title": "Cushioning & Upholstery Restoration",
+      "description": "Revitalize compressed foam with 45+ density molded PU foam and fresh breathable mesh or leatherette upholstery.",
+      "turnaround": "2-3 Days",
+      "icon": "Sparkles"
+    },
+    {
+      "id": "mechanism-base",
+      "title": "Tilt Mechanism & Base Alignment",
+      "description": "Repair broken tilt plates, replace cracked nylon/chrome bases, and restore smooth 360-degree rotation stability.",
+      "turnaround": "1-2 Days",
+      "icon": "Wrench"
+    },
+    {
+      "id": "office-amc",
+      "title": "Corporate Office Seating AMC",
+      "description": "Periodic inspection, lubrication, fastener tightening, and preventative maintenance for offices with 10+ chairs.",
+      "turnaround": "Scheduled Quarterly/Annual Visits",
+      "icon": "Building2"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev-01",
+      "author": "Dr. R. K. Srivastava",
+      "role": "Clinic Director, Unnao",
+      "comment": "Furnished our consultation room and patient waiting area with Balaji Chairs. The cantilever visitor chairs and doctor's revolving chair have superb lumbar support. Extremely polite local service.",
+      "rating": 5,
+      "date": "Verified Purchase"
+    },
+    {
+      "id": "rev-02",
+      "author": "Sunil Verma",
+      "role": "Chartered Accountant & Office Principal",
+      "comment": "Instead of buying cheap chairs online that break within months, we visited Balaji Chairs showroom at Daroga Bagh. The build quality of their high-back executive chair is exceptional, and they personally assembled everything.",
+      "rating": 5,
+      "date": "Verified Purchase"
+    },
+    {
+      "id": "rev-03",
+      "author": "Mohd. Tariq",
+      "role": "Tech Academy Coordinator, Civil Lines",
+      "comment": "Had 15 computer lab revolving chairs repaired with new hydraulic cylinders and wheels. Saved our institute nearly 60% of replacement cost. Quick turnaround and genuine parts.",
+      "rating": 5,
+      "date": "Verified Repair Service"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Do you provide office chairs in Unnao and nearby locations?",
+      "answer": "Yes. Balaji Chairs is based in Anwar Market, Daroga Bagh, Civil Lines, Unnao. We provide delivery, on-site demonstration, and installation across Unnao, Shukla Ganj, and nearby Kanpur/Lucknow corridors."
+    },
+    {
+      "question": "Can I test and try chairs in person before purchasing?",
+      "answer": "Absolutely. You are warmly welcome to visit our showroom at 941, Anwar Market, Daroga Bagh, Civil Lines, Unnao (Monday–Saturday 10 AM to 8:30 PM) to try various ergonomic backrests, height mechanisms, and cushion densities."
+    },
+    {
+      "question": "What if my existing office chair is sinking or has broken wheels?",
+      "answer": "You do not need to discard an expensive chair. We carry replacement hydraulic cylinders, heavy-duty star bases, castors, armrests, and can also re-cushion the seat. Bring it to our shop or contact us for on-site inspection."
+    },
+    {
+      "question": "Do you offer solutions for complete corporate offices and institutions?",
+      "answer": "Yes. We handle end-to-end office seating projects, executive cabins, multi-person workstations, conference rooms, and institutional tables with direct B2B pricing and warranty support."
+    },
+    {
+      "question": "How do I request a quotation or check pricing?",
+      "answer": "Simply tap the 'Enquire Now' button on any product page, send us a WhatsApp message directly via the website, or call us at +91 78803 53900. We will provide an instant, transparent quote with specifications."
+    }
+  ]
+}
